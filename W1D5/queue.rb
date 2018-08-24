@@ -8,6 +8,7 @@ class Queue
   end
 
   def enqueue(el)
+    @queue.unshift(el)
   end
 
   def dequeue
