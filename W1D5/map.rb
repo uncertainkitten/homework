@@ -60,5 +60,6 @@ class Map
   end
 
   def show
+    puts "#{@map}"
   end
 end
