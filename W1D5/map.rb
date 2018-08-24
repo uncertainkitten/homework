@@ -1,5 +1,10 @@
 class Map
-  def initialize
+  def initialize(map = nil)
+    if map = nil
+      @map = [[]]
+    else
+      @map == map
+    end
   end
 
   def set(key, value)
