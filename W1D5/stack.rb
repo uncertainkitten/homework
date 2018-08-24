@@ -12,6 +12,6 @@ class Stack
   end
 
   def peek
-    # returns, but doesn't remove, the top element in the stack
+    @stack[-1]
   end
 end
