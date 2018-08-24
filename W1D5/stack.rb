@@ -1,6 +1,10 @@
 class Stack
-  def initialize(stack)
-    @stack = stack
+  def initialize(stack = nil)
+    if stack == nil
+      @stack = []
+    else
+      @stack = stack
+    end
   end
 
   def push(el)
