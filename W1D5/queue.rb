@@ -12,6 +12,7 @@ class Queue
   end
 
   def dequeue
+    @queue.pop
   end
 
   def peek
