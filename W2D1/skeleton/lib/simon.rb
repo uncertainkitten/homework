@@ -30,16 +30,23 @@ class Simon
   def show_sequence
     add_random_color
     puts @seq
+    sleep 1
   end
 
   def require_sequence
-    clear
+    system "clear"
     print "What was the sequence? (ex. red, blue, red)"
     input = gets.chomp
-    parse_input
+    parse_input(input)
   end
 
-  def parse_input
+  def parse_input(input)
+    tester = input.split(", ")
+    if tester == @seq
+      @game_over = false
+    else
+      @game_over = true
+    end
   end
 
   def add_random_color
@@ -47,11 +54,11 @@ class Simon
   end
 
   def round_success_message
-
+    puts "You're correct!  Next round is #{@sequence_length} colors!"
   end
 
   def game_over_message
-
+    puts "Wrong!  You lose!  You got to #{@sequence_length}"
   end
 
   def reset_game
