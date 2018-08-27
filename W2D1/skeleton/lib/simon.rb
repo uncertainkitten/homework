@@ -33,7 +33,13 @@ class Simon
   end
 
   def require_sequence
+    clear
+    print "What was the sequence? (ex. red, blue, red)"
+    input = gets.chomp
+    parse_input
+  end
 
+  def parse_input
   end
 
   def add_random_color
