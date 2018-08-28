@@ -2,13 +2,26 @@ class Board
   attr_accessor :cups
 
   def initialize(name1, name2)
+    @cups = [[],[],[],[],[],[],[:store1],[],[],[],[],[],[],[:store2]]
+    place_stones
   end
 
   def place_stones
     # helper method to #initialize every non-store cup with four stones each
+    @cups.each_with_index do |cup,idx|
+      if cup.empty?
+        cups[idx] = [:stone, :stone, :stone, :stone]
+      else
+        cups[idx] = []
+      end
+    end
   end
 
   def valid_move?(start_pos)
+    begin
+      raise InvalidMove, "Invalid starting cup" if (start_pos < 0) || (start_pos > 12)
+      raise InvalidMove, "Starting cup is empty"
+    end
   end
 
   def make_move(start_pos, current_player_name)
@@ -32,3 +45,5 @@ class Board
   def winner
   end
 end
+
+class InvalidMove < RuntimeError; end
