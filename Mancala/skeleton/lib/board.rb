@@ -4,6 +4,8 @@ class Board
   def initialize(name1, name2)
     @cups = [[],[],[],[],[],[],[:store1],[],[],[],[],[],[],[:store2]]
     place_stones
+    @name1 = name1
+    @name2 = name2
   end
 
   def place_stones
@@ -25,6 +27,27 @@ class Board
   end
 
   def make_move(start_pos, current_player_name)
+    handful = []
+    empty_cup = @cups[start_pos]
+    empty_cup.length.times do |i|
+      handful << empty_cup.pop
+    end
+
+    dist = (start_pos + 1) % 13
+    until handful.empty?
+      if current_player_name == @name1 && dist == 13
+        dist = (dist + 1) % 13
+      elsif current_player_name == @name2 && dist == 6
+        dist = (dist + 1) % 13
+      else
+        @cups[dist] << handful.pop
+        dist = (dist + 1) % 13
+      end
+    end
+
+    render
+
+
   end
 
   def next_turn(ending_cup_idx)
